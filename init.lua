@@ -873,14 +873,24 @@ require('lazy').setup({
     end,
   },
   {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v3.x',
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-      'MunifTanjim/nui.nvim',
-      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+      "nvim-tree/nvim-web-devicons",
     },
+    config = function()
+      require("nvim-tree").setup {
+        update_focused_file = {
+        enable = true,
+        update_root = {
+          enable = false,
+          ignore_list = {},
+        },
+        exclude = false,
+      },
+      }
+    end,
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
