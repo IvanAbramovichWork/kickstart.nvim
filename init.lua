@@ -866,6 +866,7 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
+{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   {
     'nvim-tree/nvim-tree.lua',
     version = '*',
