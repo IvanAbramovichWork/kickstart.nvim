@@ -261,6 +261,10 @@ require('lazy').setup({
     },
   },
 
+  {
+    'sindrets/diffview.nvim',
+  },
+
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
@@ -868,7 +872,7 @@ require('lazy').setup({
       -- with nvim-treesitter. You should go explore a few and see what interests you:
       --
       --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
+      --    - Show your current context: https://github.com/nvim-treesitter/vim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
@@ -881,6 +885,7 @@ require('lazy').setup({
     },
     config = function()
       require("nvim-tree").setup {
+        vim.api.nvim_set_keymap("n", "<C-h>", ":NvimTreeToggle<cr>", {silent = true, noremap = true}),
         update_focused_file = {
         enable = true,
         update_root = {
