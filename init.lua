@@ -333,6 +333,12 @@ require('lazy').setup({
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 
+        "nvim-telescope/telescope-live-grep-args.nvim" ,
+        -- This will not install any breaking changes.
+        -- For major updates, this must be adjusted manually.
+        version = "^1.0.0",
+    },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -359,16 +365,34 @@ require('lazy').setup({
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
-        --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
+        
+        defaults = {
+          -- vimgrep_arguments = {
+          --  'rg',
+          --  '--color=never',
+          --  '--no-heading',
+          --  '--with-filename',
+          --  '--line-number',
+          --  '--column',
+          --  '--smart-case',
+          --  '--no-ignore',
+          -- },
+          mappings = {
+            --i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+            i = {
+              ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
+              ["<C-i>"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = " --iglob " }),
+            },
+          },
+        },
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
+          },
+          ['live-grep-args'] = {
+            auto_quoting = true, -- enable/disable auto-quoting
+            -- define mappings, e.g.
           },
         },
       }
