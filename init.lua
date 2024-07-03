@@ -894,6 +894,12 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
+{
+    "mbbill/undotree",
+    config = function ()
+      vim.keymap.set('n', '<leader><F5>', '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>')
+    end
+},
 { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   {
     'nvim-tree/nvim-tree.lua',
