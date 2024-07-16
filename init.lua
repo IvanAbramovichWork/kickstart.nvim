@@ -442,6 +442,14 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
+  {
+    'f-person/git-blame.nvim',
+    config = function ()
+      require('gitblame').setup {
+        vim.keymap.set('n', '<leader>gt', ":GitBlameToggle<CR>", { desc = '[G]it [B]lame' })
+      }
+    end
+  },
 
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
