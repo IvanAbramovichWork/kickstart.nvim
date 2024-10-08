@@ -916,6 +916,19 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader><F5>', '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>')
     end
 },
+{
+  'stevearc/oil.nvim',
+  ---@module 'oil'
+  ---@type oil.SetupOpts
+  opts = {},
+  -- Optional dependencies
+  -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  config = function ()
+      require("oil").setup()
+      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+  end
+},
 { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   {
     'nvim-tree/nvim-tree.lua',
