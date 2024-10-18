@@ -365,6 +365,7 @@ require('lazy').setup({
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
+      require('telescope').load_extension('harpoon')
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
@@ -878,6 +879,25 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+  {
+	  'ThePrimeagen/harpoon',
+
+	  dependencies = {'nvim-lua/plenary.nvim'},
+    config = function ()
+      local ui = require 'harpoon.ui'
+      local mark = require 'harpoon.mark'
+      vim.keymap.set('n', '<leader>hm', function() ui.toggle_quick_menu() end, { desc = '[H]arpoon [M]enu' })
+      vim.keymap.set('n', '<leader>ha', function() mark.add_file() end, { desc = '[H]arpoon  [A]dd' })
+      vim.keymap.set('n', '<leader>hn', function() ui.nav_next() end, { desc = '[H]arpoon [N]ext' })
+      vim.keymap.set('n', '<leader>hp', function() mark.add_file() end, { desc = '[H]arpoon [P]revious' })
+
+      require('harpoon').setup({
+        mark_branch = false
+      })
+
+    end
+
+	  },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
