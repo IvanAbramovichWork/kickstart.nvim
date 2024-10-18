@@ -960,6 +960,9 @@ require('lazy').setup({
     config = function()
       require('nvim-tree').setup {
         vim.api.nvim_set_keymap('n', '<C-h>', ':NvimTreeToggle<cr>', { silent = true, noremap = true }),
+        view = {
+          width = 60,
+        },
         update_focused_file = {
           enable = true,
           update_root = {
