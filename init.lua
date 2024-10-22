@@ -619,6 +619,7 @@ require('lazy').setup({
       local servers = {
         erlangls = {},
         elixirls = {},
+        lemminx = {},
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
