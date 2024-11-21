@@ -101,7 +101,7 @@ vim.g.have_nerd_font = false
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.signcolumn = "number"
+vim.opt.signcolumn = 'number'
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 -- vim.opt.relativenumber = true
@@ -244,7 +244,7 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',    opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -283,7 +283,7 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  { -- Useful plugin to show you pending keybinds.
+  {                     -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
@@ -326,7 +326,7 @@ require('lazy').setup({
 
       -- Document existing key chains
       spec = {
-        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
+        { '<leader>c', group = '[C]ode',     mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
@@ -385,13 +385,13 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-      { 
-        "nvim-telescope/telescope-live-grep-args.nvim" ,
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+      {
+        'nvim-telescope/telescope-live-grep-args.nvim',
         -- This will not install any breaking changes.
         -- For major updates, this must be adjusted manually.
-        version = "^1.0.0",
-    },
+        version = '^1.0.0',
+      },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -415,33 +415,32 @@ require('lazy').setup({
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
-      require('telescope').load_extension('harpoon')
+      require('telescope').load_extension 'harpoon'
       require('telescope').setup {
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
-        
+
         defaults = {
-          path_display={"smart"},
+          path_display = { 'smart' },
           vimgrep_arguments = {
-           'rg',
-           '--color=never',
-           '--no-heading',
-           '--with-filename',
-           '--line-number',
-           '--column',
-           '--smart-case',
-           '--no-ignore',
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--no-ignore',
           },
           file_ignore_patterns = {
-            "ebin",
-            ".eunit",
-
+            'ebin',
+            '.eunit',
           },
           mappings = {
             --i = { ['<c-enter>'] = 'to_fuzzy_refine' },
             i = {
-              ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
-              ["<C-i>"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = " --no-ignore -F" }),
+              ['<C-k>'] = require('telescope-live-grep-args.actions').quote_prompt(),
+              ['<C-i>'] = require('telescope-live-grep-args.actions').quote_prompt { postfix = ' --no-ignore -F' },
             },
           },
         },
@@ -458,7 +457,7 @@ require('lazy').setup({
               '--column',
               '--smart-case',
             },
-          }
+          },
         },
         extensions = {
           ['ui-select'] = {
@@ -484,13 +483,15 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>so', ":Telescope live_grep grep_open_files=true<CR>", { desc = '[S]earch by grep in [O]pen buffers' })
+      vim.keymap.set('n', '<leader>so', ':Telescope live_grep grep_open_files=true<CR>',
+        { desc = '[S]earch by grep in [O]pen buffers' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = '[S]earch [M]arks' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set("n", "<leader>sl", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", { desc = '[S]earch by [Live] grep args' })
+      vim.keymap.set('n', '<leader>sl', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+        { desc = '[S]earch by [Live] grep args' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -518,20 +519,20 @@ require('lazy').setup({
   },
   {
     'f-person/git-blame.nvim',
-    config = function ()
+    config = function()
       require('gitblame').setup {
-        vim.keymap.set('n', '<leader>gt', ":GitBlameToggle<CR>", { desc = '[G]it [B]lame' })
+        vim.keymap.set('n', '<leader>gt', ':GitBlameToggle<CR>', { desc = '[G]it [B]lame' }),
       }
-    end
+    end,
   },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function ()
+    config = function()
       require('lualine').setup {
         options = { theme = 'auto' },
       }
-    end
+    end,
   },
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -543,11 +544,11 @@ require('lazy').setup({
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      -- { 'j-hui/fidget.nvim',       opts = {} },
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
+      { 'folke/neodev.nvim',       opts = {} },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -694,7 +695,7 @@ require('lazy').setup({
         elixirls = {},
         lemminx = {},
         -- clangd = {},
-        -- gopls = {},
+        gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -770,7 +771,7 @@ require('lazy').setup({
     opts = {
       notify_on_error = false,
       formatters_by_ft = {
-        lua = { 'stylua' },
+        lua = { 'luaformatter' },
         erlang = { 'erlfmt' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
@@ -942,7 +943,7 @@ require('lazy').setup({
       statusline.setup { use_icons = vim.g.have_nerd_font }
 
       require('mini.starter').setup()
-
+      require('mini.notify').setup()
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
@@ -956,33 +957,6 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
-  {
-	  'ThePrimeagen/harpoon',
-
-	  dependencies = {'nvim-lua/plenary.nvim'},
-    config = function ()
-      local ui = require 'harpoon.ui'
-      local mark = require 'harpoon.mark'
-      vim.keymap.set('n', '<leader>hm', function() ui.toggle_quick_menu() end, { desc = '[H]arpoon [M]enu' })
-      vim.keymap.set('n', '<leader>ha', function() mark.add_file() end, { desc = '[H]arpoon  [A]dd' })
-      vim.keymap.set('n', '<leader>hn', function() ui.nav_next() end, { desc = '[H]arpoon [N]ext' })
-      vim.keymap.set('n', '<leader>hp', function() mark.add_file() end, { desc = '[H]arpoon [P]revious' })
-      vim.keymap.set('n', '<leader>ht', "<CMD>Telescope harpoon marks<CR>", { desc = '[H]arpoon [T]elescope' })
-      vim.keymap.set('n', '<leader>h1', function() ui.nav_file(1) end, { desc = '[H]arpoon [1] mark' })
-      vim.keymap.set('n', '<leader>h2', function() ui.nav_file(2) end, { desc = '[H]arpoon [2] mark' })
-      vim.keymap.set('n', '<leader>h3', function() ui.nav_file(3) end, { desc = '[H]arpoon [3] mark' })
-      vim.keymap.set('n', '<leader>h4', function() ui.nav_file(4) end, { desc = '[H]arpoon [4] mark' })
-
-      require('harpoon').setup({
-        mark_branch = false,
-        menu = {
-          width = vim.api.nvim_win_get_width(0) - 4,
-        }
-      })
-
-    end
-
-	  },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -1015,50 +989,6 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
-{
-    "mbbill/undotree",
-    config = function ()
-      vim.keymap.set('n', '<leader><F5>', '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>')
-    end
-},
-{
-  'stevearc/oil.nvim',
-  ---@module 'oil'
-  ---@type oil.SetupOpts
-  opts = {},
-  -- Optional dependencies
-  -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
-  dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-  config = function ()
-      require("oil").setup()
-      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-  end
-},
-{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-  {
-    'nvim-tree/nvim-tree.lua',
-    version = '*',
-    lazy = false,
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = function()
-      require('nvim-tree').setup {
-        vim.api.nvim_set_keymap('n', '<C-h>', ':NvimTreeToggle<cr>', { silent = true, noremap = true }),
-        view = {
-          width = 60,
-        },
-        update_focused_file = {
-          enable = true,
-          update_root = {
-            enable = false,
-            ignore_list = {},
-          },
-          exclude = false,
-        },
-      }
-    end,
-  },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -1070,10 +1000,10 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-   require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -1081,7 +1011,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
