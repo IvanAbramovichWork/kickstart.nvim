@@ -441,6 +441,8 @@ require('lazy').setup({
             i = {
               ['<C-k>'] = require('telescope-live-grep-args.actions').quote_prompt(),
               ['<C-i>'] = require('telescope-live-grep-args.actions').quote_prompt { postfix = ' --no-ignore -F' },
+              ["<C-Up>"] = require('telescope.actions').cycle_history_next,
+              ["<C-Down>"] = require('telescope.actions').cycle_history_prev,
             },
           },
         },
