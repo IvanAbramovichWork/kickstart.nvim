@@ -439,8 +439,8 @@ require('lazy').setup({
           mappings = {
             --i = { ['<c-enter>'] = 'to_fuzzy_refine' },
             i = {
-              ['<C-k>'] = require('telescope-live-grep-args.actions').quote_prompt(),
-              ['<C-i>'] = require('telescope-live-grep-args.actions').quote_prompt { postfix = ' --no-ignore -F' },
+              -- ['<C-k>'] = require('telescope-live-grep-args.actions').quote_prompt(),
+              ['<C-i>'] = require('telescope-live-grep-args.actions').quote_prompt {},
               ["<C-Up>"] = require('telescope.actions').cycle_history_next,
               ["<C-Down>"] = require('telescope.actions').cycle_history_prev,
             },
@@ -481,42 +481,42 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       -- vim.keymap.set('n', '<leader>sf', ":Telescope find_files find_command=rg,--no-ignore,--files<CR>", { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      -- vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>so', ':Telescope live_grep grep_open_files=true<CR>',
-        { desc = '[S]earch by grep in [O]pen buffers' })
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = '[S]earch [M]arks' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      -- vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+      -- vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+      -- vim.keymap.set('n', '<leader>so', ':Telescope live_grep grep_open_files=true<CR>',
+      --   { desc = '[S]earch by grep in [O]pen buffers' })
+      -- vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+      -- vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = '[S]earch [M]arks' })
+      -- vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
+      -- vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+      -- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>sl', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
         { desc = '[S]earch by [Live] grep args' })
 
       -- Slightly advanced example of overriding default behavior and theme
-      vim.keymap.set('n', '<leader>/', function()
-        -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
-      end, { desc = '[/] Fuzzily search in current buffer' })
-
-      -- It's also possible to pass additional configuration options.
-      --  See `:help telescope.builtin.live_grep()` for information about particular keys
-      vim.keymap.set('n', '<leader>s/', function()
-        builtin.live_grep {
-          grep_open_files = true,
-          prompt_title = 'Live Grep in Open Files',
-        }
-      end, { desc = '[S]earch [/] in Open Files' })
-
-      -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>sn', function()
-        builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[S]earch [N]eovim files' })
+      -- vim.keymap.set('n', '<leader>/', function()
+      --   -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+      --   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+      --     winblend = 10,
+      --     previewer = false,
+      --   })
+      -- end, { desc = '[/] Fuzzily search in current buffer' })
+      --
+      -- -- It's also possible to pass additional configuration options.
+      -- --  See `:help telescope.builtin.live_grep()` for information about particular keys
+      -- vim.keymap.set('n', '<leader>s/', function()
+      --   builtin.live_grep {
+      --     grep_open_files = true,
+      --     prompt_title = 'Live Grep in Open Files',
+      --   }
+      -- end, { desc = '[S]earch [/] in Open Files' })
+      --
+      -- -- Shortcut for searching your Neovim configuration files
+      -- vim.keymap.set('n', '<leader>sn', function()
+      --   builtin.find_files { cwd = vim.fn.stdpath 'config' }
+      -- end, { desc = '[S]earch [N]eovim files' })
     end,
   },
   {
@@ -681,19 +681,23 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    -- 'folke/tokyonight.nvim',
+    'folke/tokyonight.nvim',
     --'catppuccin/nvim',
-    'ellisonleao/gruvbox.nvim',
+    --'ellisonleao/gruvbox.nvim',
+    --"rose-pine/neovim",
+    -- "scottmckendry/cyberdream.nvim",
+    -- lazy = false,
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'gruvbox'
+      vim.cmd.colorscheme 'tokyonight'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
     end,
+
   },
 
   -- Highlight todo, notes, etc in comments
@@ -725,7 +729,7 @@ require('lazy').setup({
       statusline.setup { use_icons = vim.g.have_nerd_font }
 
       require('mini.starter').setup()
-      require('mini.notify').setup()
+      -- require('mini.notify').setup()
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
