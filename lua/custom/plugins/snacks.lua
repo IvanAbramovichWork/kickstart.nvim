@@ -31,6 +31,7 @@ return {
     { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
     { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
     { "<leader>sc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
+    { "<leader>sh", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>/", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
 
 
