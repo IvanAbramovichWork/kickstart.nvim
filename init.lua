@@ -246,24 +246,6 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim',    opts = {} },
 
-  -- Here is a more advanced example where we pass configuration
-  -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
-  --    require('gitsigns').setup({ ... })
-  --
-  -- See `:help gitsigns` to understand what the configuration keys do
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
-  },
-
   {
     'sindrets/diffview.nvim',
   },
@@ -517,14 +499,6 @@ require('lazy').setup({
       -- vim.keymap.set('n', '<leader>sn', function()
       --   builtin.find_files { cwd = vim.fn.stdpath 'config' }
       -- end, { desc = '[S]earch [N]eovim files' })
-    end,
-  },
-  {
-    'f-person/git-blame.nvim',
-    config = function()
-      require('gitblame').setup {
-        vim.keymap.set('n', '<leader>gt', ':GitBlameToggle<CR>', { desc = '[G]it [B]lame' }),
-      }
     end,
   },
   {
@@ -791,7 +765,7 @@ require('lazy').setup({
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.lspconfig',
   require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
