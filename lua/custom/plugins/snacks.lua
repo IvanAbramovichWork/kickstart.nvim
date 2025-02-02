@@ -34,6 +34,7 @@ return {
     { "<leader>sC",       function() Snacks.picker.command_history() end,                                 desc = "Command History" },
     { "<leader>/",        function() Snacks.picker.lines() end,                                           desc = "Buffer Lines" },
     { "<leader>sh",        function() Snacks.picker.search_history() end,                                           desc = "Search History for Snacks" },
+    { "<leader>sj",        function() Snacks.picker.jumps() end,                                           desc = "Search Jums History" },
 
 
     { "<leader>gd",       function() Snacks.picker.git_diff() end,                                        desc = "Git Diff" },
