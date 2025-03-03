@@ -248,6 +248,12 @@ require('lazy').setup({
 
   {
     'sindrets/diffview.nvim',
+    config = function()
+      vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', {noremap = true, silent = true})
+      vim.keymap.set('n', '<leader>gq', ':DiffviewClose<CR>', {noremap = true, silent = true})
+      vim.keymap.set('n', '<leader>gh', ':DiffviewFileHistory<CR>', {noremap = true, silent = true})
+    end
+
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
