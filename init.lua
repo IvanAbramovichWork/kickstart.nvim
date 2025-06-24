@@ -758,6 +758,48 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
+  {
+    'ldelossa/litee.nvim',
+    event = "VeryLazy",
+    opts = {
+      notify = { enabled = false },
+      panel = {
+        orientation = "left",
+        panel_size = 60,
+      },
+    },
+    config = function(_, opts)
+      require('litee.lib').setup(opts)
+    end
+  },
+
+  {
+    'ldelossa/litee-calltree.nvim',
+    dependencies = 'ldelossa/litee.nvim',
+    event = "VeryLazy",
+    opts = {
+      on_open = "panel",
+      map_resize_keys = true,
+      keymaps = {
+        expand = "zo",
+        collapse = "zc",
+        collapse_all = "zM",
+        jump = "<CR>",
+        jump_split = "s",
+        jump_vsplit = "v",
+        jump_tab = "t",
+        hover = "i",
+        details = "d",
+        close = "X",
+        close_panel_pop_out = "<Esc>",
+        help = "?",
+        hide = "H",
+        switch = "S",
+        focus = "f"
+      },
+    },
+    config = function(_, opts) require('litee.calltree').setup(opts) end
+  },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
