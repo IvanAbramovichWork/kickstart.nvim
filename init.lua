@@ -245,7 +245,17 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim',    opts = {} },
+  {
+    'ahmedkhalf/project.nvim',
+    config = function()
+      require("project_nvim").setup {
+        require("telescope").load_extension('projects'),
 
+        vim.keymap.set('n', '<leader>sp', ':Telescope projects<CR>', { noremap = true, silent = true })
+
+      }
+    end
+  },
   {
     'sindrets/diffview.nvim',
     config = function()
