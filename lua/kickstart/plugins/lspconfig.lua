@@ -2,7 +2,7 @@ return { -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
-    { 'williamboman/mason.nvim', config = true },   -- NOTE: Must be loaded before dependants
+    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -201,33 +201,41 @@ return { -- LSP Configuration & Plugins
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      'stylua',   -- Used to format Lua code
+      'stylua', -- Used to format Lua code
       -- 'erlangls',
     })
     -- require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-    require('lspconfig')["elp"].setup({
+
+    local lspconfig = require('lspconfig')
+    local util = require('lspconfig.util')
+
+    lspconfig.elp.setup({
       cmd = { 'elp', 'server' },
       filetypes = { 'erlang' },
-      root_markers = { 'rebar.config', 'erlang.mk', '.git' },
-      root_directory = {"~/ecss10"},
+
+      root_dir = function(fname)
+        return util.root_pattern('rebar.config', '.git', 'src')(fname)
+            or vim.fn.expand('~/ecss10')
+      end,
     })
+
 
     -- require('mason-lspconfig').setup {
     --   handlers = {
     --     function(server_name)
+    --       if server_name == "elp" then
+    --         return
+    --       end
     --       local server = servers[server_name] or {}
     --       -- This handles overriding only values explicitly passed
     --       -- by the server configuration above. Useful when disabling
     --       -- certain features of an LSP (for example, turning off formatting for tsserver)
     --       server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
     --
-    --       if server_name == "elp" then
-    --         server.cmd = { "elp", "server" } -- uses PATH version (works in nix-shell)
-    --       end
-    --
     --       require('lspconfig')[server_name].setup(server)
     --     end,
     --   },
     -- }
+
   end,
 }
