@@ -75,7 +75,7 @@ return { -- LSP Configuration & Plugins
 
         -- Fuzzy find all the symbols in your current document.
         --  Symbols are things like variables, functions, types, etc.
-        map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+        -- map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 
         -- Fuzzy find all the symbols in your current workspace.
         --  Similar to document symbols, except searches over your entire project.
@@ -205,17 +205,25 @@ return { -- LSP Configuration & Plugins
       -- 'erlangls',
     })
     -- require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+    --
+    -- local lspconfig = vim.lsp.config
+    -- local util = require('lspconfig.util')
+    --
+    -- lspconfig.elp.setup({
+    --   cmd = { 'elp', 'server' },
+    --   filetypes = { 'erlang' },
+    --
+    --   root_dir = function(fname)
+    --     return vim.fn.expand('~/ecss10')
+    --   end,
+    -- })
+    
+    vim.lsp.enable('elp')
+    vim.lsp.config('elp', {
 
-    local lspconfig = require('lspconfig')
-    local util = require('lspconfig.util')
-
-    lspconfig.elp.setup({
       cmd = { 'elp', 'server' },
       filetypes = { 'erlang' },
 
-      root_dir = function(fname)
-        return vim.fn.expand('~/ecss10')
-      end,
     })
 
 
