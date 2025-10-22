@@ -678,7 +678,7 @@ require('lazy').setup({
     -- "catppuccin/nvim",
     --'catppuccin/nvim',
     -- 'ellisonleao/gruvbox.nvim',
-    'navarasu/onedark.nvim',
+    'rebelot/kanagawa.nvim',
     --"rose-pine/neovim",
     -- "scottmckendry/cyberdream.nvim",
     -- lazy = false,
@@ -687,7 +687,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'kanagawa'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
