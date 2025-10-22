@@ -214,8 +214,7 @@ return { -- LSP Configuration & Plugins
       filetypes = { 'erlang' },
 
       root_dir = function(fname)
-        return util.root_pattern('rebar.config', '.git', 'src')(fname)
-            or vim.fn.expand('~/ecss10')
+        return vim.fn.expand('~/ecss10')
       end,
     })
 
