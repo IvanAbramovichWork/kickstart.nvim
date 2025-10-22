@@ -361,6 +361,16 @@ require('lazy').setup({
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
+  -- { "nvim-tree/nvim-web-devicons", lazy = false, enabled = true, opts ={} },
+
+{
+  "echasnovski/mini.icons",
+  version = false,  -- always latest
+  lazy = false,     -- load immediately
+  config = function()
+    require("mini.icons").setup()
+  end,
+},
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
