@@ -734,7 +734,7 @@ require('lazy').setup({
       -- set use_icons to true if you have a Nerd Font
       statusline.setup { use_icons = vim.g.have_nerd_font }
 
-      require('mini.starter').setup()
+      -- require('mini.starter').setup()
       -- require('mini.notify').setup()
 
       -- You can configure sections in the statusline by overriding their
