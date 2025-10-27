@@ -241,6 +241,8 @@ return { -- LSP Configuration & Plugins
 
       cmd = { 'elp', 'server' },
       filetypes = { 'erlang' },
+      root_dir = '~/ecss10/',
+      root_markers = {},
 
     })
 
