@@ -259,11 +259,29 @@ require('lazy').setup({
   {
     'sindrets/diffview.nvim',
     config = function()
-      vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', {noremap = true, silent = true})
-      vim.keymap.set('n', '<leader>gq', ':DiffviewClose<CR>', {noremap = true, silent = true})
-      vim.keymap.set('n', '<leader>gh', ':DiffviewFileHistory<CR>', {noremap = true, silent = true})
+      vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<leader>gq', ':DiffviewClose<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<leader>gh', ':DiffviewFileHistory<CR>', { noremap = true, silent = true })
     end
 
+  },
+  {
+    "NeogitOrg/neogit",
+    lazy = true,
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed.
+      -- "nvim-telescope/telescope.nvim", -- optional
+      -- "ibhagwan/fzf-lua",            -- optional
+      -- "nvim-mini/mini.pick",         -- optional
+      "folke/snacks.nvim",           -- optional
+    },
+    cmd = "Neogit",
+    keys = {
+      { "<leader>gG", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
+    }
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
@@ -363,14 +381,14 @@ require('lazy').setup({
 
   -- { "nvim-tree/nvim-web-devicons", lazy = false, enabled = true, opts ={} },
 
-{
-  "echasnovski/mini.icons",
-  version = false,  -- always latest
-  lazy = false,     -- load immediately
-  config = function()
-    require("mini.icons").setup()
-  end,
-},
+  {
+    "echasnovski/mini.icons",
+    version = false, -- always latest
+    lazy = false,  -- load immediately
+    config = function()
+      require("mini.icons").setup()
+    end,
+  },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -606,7 +624,7 @@ require('lazy').setup({
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
-      luasnip.filetype_extend('erlang', {'erlang'})
+      luasnip.filetype_extend('erlang', { 'erlang' })
       luasnip.config.setup {}
 
       cmp.setup {
@@ -685,7 +703,7 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    
+
     -- "catppuccin/nvim",
     --'catppuccin/nvim',
     -- 'ellisonleao/gruvbox.nvim',
