@@ -296,6 +296,7 @@ require('lazy').setup({
       require("gitlab").setup({
       -- config_path = "~/.gitlab.nvim", -- Custom path for `.gitlab.nvim` file, please read the "Connecting to Gitlab" section
       })
+      vim.keymap.set('n', '<leader>tl', function () require("gitlab").review() end, { desc = 'toggle gitlab merge requets for current branch' })
     end,
   },
 
