@@ -250,9 +250,8 @@ require('lazy').setup({
     config = function()
       require("project_nvim").setup {
         require("telescope").load_extension('projects'),
-
+        -- <c-w> change working dir
         vim.keymap.set('n', '<leader>sp', ':Telescope projects<CR>', { noremap = true, silent = true })
-
       }
     end
   },
