@@ -269,19 +269,35 @@ require('lazy').setup({
     "NeogitOrg/neogit",
     lazy = true,
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
+      "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
 
       -- Only one of these is needed.
       -- "nvim-telescope/telescope.nvim", -- optional
       -- "ibhagwan/fzf-lua",            -- optional
       -- "nvim-mini/mini.pick",         -- optional
-      "folke/snacks.nvim",           -- optional
+      "folke/snacks.nvim", -- optional
     },
     cmd = "Neogit",
     keys = {
       { "<leader>gG", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
     }
+  },
+  {
+    "harrisoncramer/gitlab.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "stevearc/dressing.nvim",                                 -- Recommended but not required. Better UI for pickers.
+      "nvim-tree/nvim-web-devicons",                            -- Recommended but not required. Icons in discussion tree.
+    },
+    build = function() require("gitlab.server").build(true) end, -- Builds the Go binary
+    config = function()
+      require("gitlab").setup({
+      -- config_path = "~/.gitlab.nvim", -- Custom path for `.gitlab.nvim` file, please read the "Connecting to Gitlab" section
+      })
+    end,
   },
 
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
@@ -384,7 +400,7 @@ require('lazy').setup({
   {
     "echasnovski/mini.icons",
     version = false, -- always latest
-    lazy = false,  -- load immediately
+    lazy = false,    -- load immediately
     config = function()
       require("mini.icons").setup()
     end,
