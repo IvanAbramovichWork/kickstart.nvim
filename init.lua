@@ -259,7 +259,7 @@ require('lazy').setup({
     config = function()
       vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<CR>', { noremap = true, silent = true })
       vim.keymap.set('n', '<leader>gq', ':DiffviewClose<CR>', { noremap = true, silent = true })
-      vim.keymap.set('n', '<leader>gh', ':DiffviewFileHistory<CR>', { noremap = true, silent = true })
+      vim.keymap.set('n', '<leader>gh', ':DiffviewFileHistory %<CR>', { noremap = true, silent = true })
     end
 
   },
