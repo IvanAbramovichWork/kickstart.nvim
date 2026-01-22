@@ -266,6 +266,7 @@ require('lazy').setup({
       }
     end
   },
+  { "lambdalisue/suda.vim" },
   {
     'sindrets/diffview.nvim',
     config = function()
