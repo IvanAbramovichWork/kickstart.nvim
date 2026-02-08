@@ -37,6 +37,7 @@ return {
     { "<leader>sm",       function() Snacks.picker.marks() end,                                           desc = "Marks" },
     { "<leader>sd",       function() Snacks.picker.diagnostics_buffer() end,                              desc = "Diagnostics" },
     { '<leader>s"',       function() Snacks.picker.registers() end,                                       desc = "Registers" },
+    { '<leader>s/',       function() Snacks.picker.search_history() end,                                  desc = "Search History" },
     { "<leader>sc",       function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,         desc = "Find Config File" },
     { "<leader>:",        function() Snacks.picker.command_history() end,                                 desc = "Command History" },
     { "<leader>ds",       function() Snacks.picker.lsp_symbols() end,                                     desc = "Lsp Symbols" },
