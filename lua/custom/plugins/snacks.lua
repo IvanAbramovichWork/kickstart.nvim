@@ -22,6 +22,8 @@ return {
   keys = {
     { "<leader>gg",       function() Snacks.lazygit() end,                                                desc = "Lazygit" },
     { "gr",               function() Snacks.picker.lsp_references() end,                                  nowait = true,                     desc = "Lsp references" },
+    { "gai",              function() Snacks.picker.lsp_incoming_calls() end,                              desc = "C[a]lls Incoming" },
+    { "gao",              function() Snacks.picker.lsp_outgoing_calls() end,                              desc = "C[a]lls Outgoing" },
     { "<leader>sf",       function() Snacks.picker.files({ ignored = true, exclude = { '*.beam' } }) end, desc = "Files" },
     { "<leader><leader>", function() Snacks.picker.buffers() end,                                         desc = "Buffers" },
     { "<leader>s.",       function() Snacks.picker.recent() end,                                          desc = "Recent" },
